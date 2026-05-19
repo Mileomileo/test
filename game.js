@@ -424,6 +424,7 @@ function restartLevel() {
     player.isClimbing = false;
     player.canDash = true;
     player.isDashing = false;
+    gameState.health = 3; // FIXED: Reset health to 3
     gameState.gameOver = false;
     gameState.won = false;
     currentLevelData = JSON.parse(JSON.stringify(levels[gameState.currentLevel - 1]));
@@ -441,6 +442,7 @@ function nextLevel() {
         player.isClimbing = false;
         player.canDash = true;
         player.isDashing = false;
+        gameState.health = 3; // Reset health for new level
         gameState.gameOver = false;
         gameState.won = false;
     } else {
