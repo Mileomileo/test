@@ -75,78 +75,97 @@ window.addEventListener('keyup', (e) => {
 // Level data
 const levels = [
     {
-        // Level 1: Basic platforming
+        // Level 1: Basic platforming - Medium difficulty
         platforms: [
             { x: 0, y: 550, width: 800, height: 50 }, // Ground
-            { x: 150, y: 480, width: 150, height: 20 },
-            { x: 450, y: 420, width: 150, height: 20 },
+            { x: 100, y: 480, width: 120, height: 20 },
+            { x: 400, y: 420, width: 120, height: 20 },
             { x: 150, y: 350, width: 500, height: 20 },
-            { x: 600, y: 280, width: 150, height: 20 },
-            { x: 250, y: 200, width: 300, height: 20 },
+            { x: 550, y: 280, width: 150, height: 20 },
+            { x: 250, y: 200, width: 150, height: 20 },
+            { x: 600, y: 140, width: 150, height: 20 },
         ],
         enemies: [
-            { x: 200, y: 450, width: 30, height: 30, speed: 2, minX: 100, maxX: 350, type: 'patrol' },
-            { x: 500, y: 390, width: 30, height: 30, speed: 2, minX: 400, maxX: 650, type: 'patrol' },
+            { x: 150, y: 450, width: 30, height: 30, speed: 3, minX: 100, maxX: 280, type: 'patrol' },
+            { x: 450, y: 390, width: 30, height: 30, speed: 3, minX: 400, maxX: 570, type: 'patrol' },
+            { x: 300, y: 320, width: 30, height: 30, speed: 2.5, minX: 150, maxX: 650, type: 'patrol' },
+            { x: 580, y: 250, width: 30, height: 30, speed: 2, minX: 550, maxX: 700, type: 'patrol' },
         ],
         vines: [],
-        spikes: [],
-        goal: { x: 700, y: 220, width: 50, height: 50 },
+        spikes: [
+            { x: 250, y: 470, width: 100, height: 30 },
+            { x: 550, y: 410, width: 80, height: 30 },
+        ],
+        goal: { x: 625, y: 90, width: 50, height: 50 },
         collectibles: [
-            { x: 300, y: 320, width: 15, height: 15 },
-            { x: 550, y: 250, width: 15, height: 15 },
+            { x: 200, y: 450, width: 15, height: 15 },
+            { x: 500, y: 390, width: 15, height: 15 },
+            { x: 350, y: 320, width: 15, height: 15 },
         ]
     },
     {
-        // Level 2: Climbing challenge
+        // Level 2: Climbing challenge - Harder
         platforms: [
-            { x: 0, y: 550, width: 300, height: 50 }, // Ground left
-            { x: 500, y: 550, width: 300, height: 50 }, // Ground right
-            { x: 100, y: 450, width: 100, height: 20 },
-            { x: 600, y: 450, width: 100, height: 20 },
+            { x: 0, y: 550, width: 200, height: 50 }, // Ground left
+            { x: 600, y: 550, width: 200, height: 50 }, // Ground right
+            { x: 80, y: 450, width: 100, height: 20 },
+            { x: 620, y: 450, width: 100, height: 20 },
+            { x: 150, y: 350, width: 80, height: 20 },
         ],
         enemies: [
-            { x: 150, y: 420, width: 30, height: 30, speed: 3, chaseRange: 150, type: 'chase' },
-            { x: 650, y: 420, width: 30, height: 30, speed: 3, chaseRange: 150, type: 'chase' },
+            { x: 120, y: 420, width: 30, height: 30, speed: 2.5, chaseRange: 200, type: 'chase' },
+            { x: 650, y: 420, width: 30, height: 30, speed: 2.5, chaseRange: 200, type: 'chase' },
         ],
         vines: [
-            { x: 350, y: 200, width: 40, height: 400 },
-            { x: 150, y: 300, width: 40, height: 250 },
+            { x: 350, y: 150, width: 40, height: 450 },
+            { x: 100, y: 300, width: 40, height: 250 },
         ],
         spikes: [
-            { x: 300, y: 520, width: 200, height: 30 },
+            { x: 200, y: 520, width: 400, height: 30 },
+            { x: 300, y: 380, width: 200, height: 30 },
         ],
-        goal: { x: 350, y: 100, width: 50, height: 50 },
+        goal: { x: 350, y: 80, width: 50, height: 50 },
         collectibles: [
-            { x: 360, y: 350, width: 15, height: 15 },
-            { x: 360, y: 250, width: 15, height: 15 },
+            { x: 360, y: 300, width: 15, height: 15 },
+            { x: 360, y: 200, width: 15, height: 15 },
+            { x: 360, y: 100, width: 15, height: 15 },
         ]
     },
     {
-        // Level 3: Dash challenge
+        // Level 3: Dash challenge - Very hard
         platforms: [
-            { x: 0, y: 550, width: 150, height: 50 },
-            { x: 250, y: 500, width: 100, height: 20 },
-            { x: 450, y: 450, width: 100, height: 20 },
-            { x: 650, y: 400, width: 150, height: 20 },
-            { x: 200, y: 350, width: 100, height: 20 },
-            { x: 550, y: 300, width: 100, height: 20 },
-            { x: 300, y: 250, width: 100, height: 20 },
+            { x: 0, y: 550, width: 120, height: 50 },
+            { x: 200, y: 500, width: 80, height: 20 },
+            { x: 350, y: 450, width: 80, height: 20 },
+            { x: 500, y: 400, width: 80, height: 20 },
+            { x: 650, y: 350, width: 120, height: 20 },
+            { x: 150, y: 300, width: 80, height: 20 },
+            { x: 450, y: 250, width: 80, height: 20 },
+            { x: 600, y: 180, width: 100, height: 20 },
         ],
         enemies: [
-            { x: 300, y: 520, width: 30, height: 30, speed: 4, minX: 200, maxX: 400, type: 'patrol' },
-            { x: 600, y: 370, width: 30, height: 30, speed: 3, minX: 500, maxX: 750, type: 'patrol' },
+            { x: 220, y: 470, width: 30, height: 30, speed: 4, minX: 200, maxX: 320, type: 'patrol' },
+            { x: 400, y: 420, width: 30, height: 30, speed: 4, minX: 350, maxX: 470, type: 'patrol' },
+            { x: 550, y: 370, width: 30, height: 30, speed: 4, minX: 500, maxX: 620, type: 'patrol' },
+            { x: 300, y: 320, width: 30, height: 30, speed: 3.5, chaseRange: 150, type: 'chase' },
         ],
         vines: [],
         spikes: [
-            { x: 150, y: 500, width: 100, height: 30 },
-            { x: 400, y: 470, width: 50, height: 30 },
-            { x: 700, y: 420, width: 80, height: 30 },
+            { x: 120, y: 520, width: 80, height: 30 },
+            { x: 320, y: 470, width: 30, height: 30 },
+            { x: 470, y: 420, width: 30, height: 30 },
+            { x: 620, y: 370, width: 30, height: 30 },
+            { x: 200, y: 320, width: 250, height: 30 },
+            { x: 350, y: 270, width: 100, height: 30 },
+            { x: 550, y: 220, width: 50, height: 30 },
         ],
-        goal: { x: 700, y: 150, width: 50, height: 50 },
+        goal: { x: 625, y: 130, width: 50, height: 50 },
         collectibles: [
-            { x: 500, y: 270, width: 15, height: 15 },
-            { x: 350, y: 220, width: 15, height: 15 },
-            { x: 250, y: 320, width: 15, height: 15 },
+            { x: 220, y: 450, width: 15, height: 15 },
+            { x: 420, y: 400, width: 15, height: 15 },
+            { x: 570, y: 350, width: 15, height: 15 },
+            { x: 320, y: 290, width: 15, height: 15 },
+            { x: 500, y: 230, width: 15, height: 15 },
         ]
     }
 ];
@@ -244,6 +263,7 @@ function updatePlayer() {
             if (gameState.health <= 0) {
                 gameState.gameOver = true;
             }
+            break;
         }
     }
 
@@ -258,6 +278,7 @@ function updatePlayer() {
             if (gameState.health <= 0) {
                 gameState.gameOver = true;
             }
+            break;
         }
     }
 
@@ -424,7 +445,7 @@ function restartLevel() {
     player.isClimbing = false;
     player.canDash = true;
     player.isDashing = false;
-    gameState.health = 3; // FIXED: Reset health to 3
+    gameState.health = 3;
     gameState.gameOver = false;
     gameState.won = false;
     currentLevelData = JSON.parse(JSON.stringify(levels[gameState.currentLevel - 1]));
@@ -442,7 +463,7 @@ function nextLevel() {
         player.isClimbing = false;
         player.canDash = true;
         player.isDashing = false;
-        gameState.health = 3; // Reset health for new level
+        gameState.health = 3;
         gameState.gameOver = false;
         gameState.won = false;
     } else {
